@@ -21,8 +21,11 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := consumerir.universal5420
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
-#LOCAL_SRC_FILES := consumerir.c
+ifneq($(IR_USE_LEGACY_HAL),true)
+LOCAL_SRC_FILES := consumerir.c
+else
 LOCAL_SRC_FILES := consumerir.cmlegacy.c
+endif
 LOCAL_SHARED_LIBRARIES := liblog libcutils
 LOCAL_MODULE_TAGS := optional
 
